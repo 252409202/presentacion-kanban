@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Metodología Kanban</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#0f172a;color:#e2e8f0}
+.container{max-width:1100px;margin:auto;padding:28px}
+.hero{min-height:360px;display:flex;flex-direction:column;justify-content:center;text-align:center;padding:35px}
+.badge{display:inline-block;margin:auto;padding:8px 14px;border-radius:999px;background:#1e293b;color:#93c5fd;font-weight:bold}
+h1{font-size:clamp(42px,7vw,76px);margin:18px 0 8px}
+h2{font-size:32px;margin-top:0;color:#93c5fd}
+.subtitle{font-size:20px;color:#cbd5e1}
+nav{position:sticky;top:0;z-index:10;background:#111827dd;backdrop-filter:blur(10px);border-bottom:1px solid #334155}
+.navin{max-width:1100px;margin:auto;display:flex;gap:8px;overflow:auto;padding:10px 28px}
+button{border:0;border-radius:10px;padding:11px 16px;background:#2563eb;color:white;font-weight:bold;cursor:pointer}
+button:hover{filter:brightness(1.12)}
+.navbtn{background:#1e293b;white-space:nowrap}
+.section{display:none;min-height:620px;padding:45px 0}
+.section.active{display:block}
+.cardgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:18px}
+.card,.info{background:#1e293b;border:1px solid #334155;border-radius:18px;padding:22px;box-shadow:0 8px 30px #0002}
+.card h3{color:#bfdbfe;margin-top:0}
+.icon{font-size:38px}
+.flow{display:flex;gap:12px;align-items:center;justify-content:center;flex-wrap:wrap;margin:30px 0}
+.flowbox{padding:20px 28px;border-radius:15px;background:#1e293b;border:2px solid #3b82f6;font-weight:bold}
+.arrow{font-size:28px;color:#60a5fa}
+.board{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:25px}
+.column{background:#0b1220;border:1px solid #334155;border-radius:14px;padding:15px;min-height:280px}
+.column h3{text-align:center}
+.task{background:#334155;padding:14px;margin:10px 0;border-radius:10px;cursor:grab}
+.task:active{opacity:.5}
+.question{margin:15px 0;padding:18px;background:#1e293b;border-radius:14px}
+.answer{display:none;margin-top:10px;color:#86efac;font-weight:bold}
+.small{color:#94a3b8}
+footer{text-align:center;padding:30px;color:#94a3b8}
+@media(max-width:700px){.board{grid-template-columns:1fr}.container{padding:18px}.section{padding:30px 0}}
+</style>
+</head>
+<body>
+
+<nav><div class="navin">
+<button class="navbtn" onclick="show('inicio')">Inicio</button>
+<button class="navbtn" onclick="show('que')">¿Qué es?</button>
+<button class="navbtn" onclick="show('elementos')">Elementos</button>
+<button class="navbtn" onclick="show('principios')">Principios</button>
+<button class="navbtn" onclick="show('ejemplo')">Ejemplo</button>
+<button class="navbtn" onclick="show('actividad')">Actividad</button>
+<button class="navbtn" onclick="show('quiz')">Quiz</button>
+</div></nav>
+
+<main class="container">
+
+<section id="inicio" class="section active hero">
+<span class="badge">PRESENTACIÓN INTERACTIVA</span>
+<h1>Metodología Kanban</h1>
+<p class="subtitle">Visualizar el trabajo · Organizar las tareas · Mejorar continuamente</p>
+<p class="small"><strong>Integrantes:</strong><br>
+Ethan Nirek Amaral Martinez<br>
+Cristian Alexis Avalos Reyes<br>
+Dylan Santiago Hernandez Valente<br>
+Jose Angel Jimenez Gonzalez</p>
+<button onclick="show('que')">Comenzar →</button>
+</section>
+
+<section id="que" class="section">
+<h2>¿Qué es Kanban?</h2>
+<div class="info">
+<p><b>Kanban</b> es una metodología para gestionar y organizar el trabajo de forma visual. Las tareas se representan mediante tarjetas y avanzan por diferentes etapas de un proceso.</p>
+</div>
+<div class="flow">
+<div class="flowbox">POR HACER</div><div class="arrow">→</div>
+<div class="flowbox">EN PROCESO</div><div class="arrow">→</div>
+<div class="flowbox">TERMINADO</div>
+</div>
+<div class="cardgrid">
+<div class="card"><div class="icon">👁️</div><h3>Visualizar</h3><p>Permite ver qué tareas existen y en qué estado se encuentran.</p></div>
+<div class="card"><div class="icon">📋</div><h3>Organizar</h3><p>Ayuda a ordenar el trabajo y establecer prioridades.</p></div>
+<div class="card"><div class="icon">🔄</div><h3>Mejorar</h3><p>Facilita detectar problemas y mejorar el flujo de trabajo.</p></div>
+</div>
+</section>
+
+<section id="elementos" class="section">
+<h2>Elementos principales</h2>
+<div class="cardgrid">
+<div class="card"><div class="icon">🗂️</div><h3>Tablero</h3><p>Representa visualmente el flujo de trabajo mediante columnas.</p></div>
+<div class="card"><div class="icon">📝</div><h3>Tarjetas</h3><p>Cada tarjeta representa una tarea o actividad.</p></div>
+<div class="card"><div class="icon">📊</div><h3>Columnas</h3><p>Representan las etapas por las que pasa una tarea.</p></div>
+<div class="card"><div class="icon">🚦</div><h3>Límite de trabajo</h3><p>Ayuda a evitar que se acumulen demasiadas tareas en proceso.</p></div>
+</div>
+</section>
+
+<section id="principios" class="section">
+<h2>Principios de Kanban</h2>
+<div class="cardgrid">
+<div class="card"><h3>1. Visualizar el trabajo</h3><p>Mostrar las tareas en un tablero para conocer el estado del trabajo.</p></div>
+<div class="card"><h3>2. Limitar el trabajo en progreso</h3><p>Evitar comenzar más tareas de las que el equipo puede atender.</p></div>
+<div class="card"><h3>3. Gestionar el flujo</h3><p>Observar cómo avanzan las tareas y detectar retrasos.</p></div>
+<div class="card"><h3>4. Hacer explícitas las reglas</h3><p>Definir claramente cuándo una tarea puede pasar de una etapa a otra.</p></div>
+<div class="card"><h3>5. Mejorar continuamente</h3><p>Analizar el proceso y realizar cambios para hacerlo más eficiente.</p></div>
+</div>
+</section>
+
+<section id="ejemplo" class="section">
+<h2>Ejemplo: proyecto escolar</h2>
+<p>Arrastra las tarjetas entre columnas para simular el funcionamiento de Kanban.</p>
+<div class="board">
+<div class="column" ondragover="allow(event)" ondrop="drop(event)"><h3>🟨 Por hacer</h3>
+<div class="task" draggable="true" ondragstart="drag(event)" id="t1">Investigar información</div>
+<div class="task" draggable="true" ondragstart="drag(event)" id="t2">Buscar imágenes</div>
+</div>
+<div class="column" ondragover="allow(event)" ondrop="drop(event)"><h3>🟦 En proceso</h3>
+<div class="task" draggable="true" ondragstart="drag(event)" id="t3">Diseñar la presentación</div>
+</div>
+<div class="column" ondragover="allow(event)" ondrop="drop(event)"><h3>🟩 Terminado</h3>
+<div class="task" draggable="true" ondragstart="drag(event)" id="t4">Elegir el tema</div>
+</div>
+</div>
+</section>
+
+<section id="actividad" class="section">
+<h2>Actividad interactiva</h2>
+<p>Haz clic en cada pregunta para revelar la respuesta.</p>
+<div class="question" onclick="toggle(this)">¿Dónde colocarías una tarea que todavía no has comenzado?<div class="answer">Respuesta: POR HACER.</div></div>
+<div class="question" onclick="toggle(this)">¿Dónde colocarías una tarea que estás realizando actualmente?<div class="answer">Respuesta: EN PROCESO.</div></div>
+<div class="question" onclick="toggle(this)">¿Dónde colocarías una tarea que ya completaste?<div class="answer">Respuesta: TERMINADO.</div></div>
+</section>
+
+<section id="quiz" class="section">
+<h2>Quiz final</h2>
+<div class="question"><b>1. ¿Cuál es el objetivo principal de un tablero Kanban?</b><br><br>
+<button onclick="quiz(this,false)">Hacer más tareas al mismo tiempo</button>
+<button onclick="quiz(this,true)">Visualizar el trabajo y su avance</button>
+<button onclick="quiz(this,false)">Eliminar todas las tareas</button>
+<p class="result"></p></div>
+<div class="question"><b>2. ¿Qué representa normalmente una tarjeta?</b><br><br>
+<button onclick="quiz(this,false)">Una persona</button>
+<button onclick="quiz(this,true)">Una tarea</button>
+<button onclick="quiz(this,false)">Un salón</button>
+<p class="result"></p></div>
+<div class="question"><b>3. ¿Qué busca el límite de trabajo en progreso?</b><br><br>
+<button onclick="quiz(this,true)">Evitar la acumulación de tareas</button>
+<button onclick="quiz(this,false)">Aumentar tareas simultáneas</button>
+<button onclick="quiz(this,false)">Eliminar el tablero</button>
+<p class="result"></p></div>
+</section>
+
+</main>
+<footer>Metodología Kanban · Presentación escolar interactiva</footer>
+
+<script>
+function show(id){
+ document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+ document.getElementById(id).classList.add('active');
+ window.scrollTo({top:0,behavior:'smooth'});
+}
+function allow(e){e.preventDefault()}
+function drag(e){e.dataTransfer.setData("text",e.target.id)}
+function drop(e){
+ e.preventDefault();
+ const id=e.dataTransfer.getData("text");
+ const el=document.getElementById(id);
+ let target=e.target.closest('.column');
+ if(target) target.appendChild(el);
+}
+function toggle(el){
+ const a=el.querySelector('.answer');
+ a.style.display=a.style.display==='block'?'none':'block';
+}
+function quiz(btn,correct){
+ const result=btn.parentElement.querySelector('.result');
+ result.textContent=correct?'✓ ¡Correcto!':'✗ Intenta de nuevo.';
+ result.style.color=correct?'#86efac':'#fca5a5';
+}
+</script>
+</body>
+</html>
